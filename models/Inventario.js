@@ -52,7 +52,7 @@ const InventarioSchema = Schema({
     },
     estadoEquipo:{
         type: Schema.Types.ObjectId,
-        ref: 'EstadoEquipo' ,
+        ref: 'EstadoEquipo',
         required: true,
     },
     fechaCreacion:{
