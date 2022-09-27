@@ -16,6 +16,18 @@ router.get('/', async function(req,res){
     }
 });
 
+router.get('/:tipoEquipoId', async function(req,res){
+    try {
+        const tipoEquipo = await TipoEquipo.findById(req.params.tipoEquipoId);
+        if(!tipoEquipo){
+            return res.status(404).send('TipoEquipo no existe')
+        };
+        res.send(tipoEquipo);
+    } catch (error) {
+        res.status(500).send('hubo un error');
+    }
+});
+
 router.post('/', async function(req,res){
     try {
         const tipoExiste = await TipoEquipo.findOne({nombre: req.body.nombre});

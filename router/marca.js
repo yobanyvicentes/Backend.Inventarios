@@ -16,6 +16,18 @@ try {
 }
 });
 
+router.get('/:marcaId', async function(req,res){
+    try {
+        const marca = await Marca.findById(req.params.marcaId);
+        if(!marca){
+            return res.status(404).send('marca no existe')
+        };
+        res.send(marca);
+    } catch (error) {
+        res.status(500).send('hubo un error');
+    }
+});
+
 router.post('/', async function(req,res){
     try {
 //en la colección de marcas buscame por nombre aquel que coincida
